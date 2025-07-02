@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     sms_factor (0.2.2)
+      dry-struct (~> 1.6)
+      dry-types (~> 1.7)
       nokogiri (~> 1.13, < 1.14)
       rest-client (~> 2.0.2, >= 2.0.2)
 
@@ -11,19 +13,41 @@ GEM
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    concurrent-ruby (1.3.5)
     crack (0.4.5)
       rexml
     diff-lcs (1.5.0)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
+    domain_name (0.6.20240107)
+    dry-core (1.0.0)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-inflector (1.1.0)
+    dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-struct (1.6.0)
+      dry-core (~> 1.0, < 2)
+      dry-types (>= 1.7, < 2)
+      ice_nine (~> 0.11)
+      zeitwerk (~> 2.6)
+    dry-types (1.7.1)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
     ffaker (2.21.0)
     hashdiff (1.0.1)
-    http-cookie (1.0.5)
+    http-cookie (1.0.8)
       domain_name (~> 0.5)
+    ice_nine (0.11.2)
     json (2.6.3)
-    mime-types (3.4.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.0218.1)
+    logger (1.7.0)
+    mime-types (3.7.0)
+      logger
+      mime-types-data (~> 3.2025, >= 3.2025.0507)
+    mime-types-data (3.2025.0701)
     netrc (0.11.0)
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
@@ -31,7 +55,7 @@ GEM
     parser (3.2.2.0)
       ast (~> 2.4.1)
     public_suffix (5.0.1)
-    racc (1.6.2)
+    racc (1.8.1)
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.7.0)
@@ -71,20 +95,20 @@ GEM
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
     ruby-progressbar (1.13.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
     vcr (6.1.0)
     webmock (3.18.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    zeitwerk (2.6.18)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  dry-struct
+  dry-types
   ffaker
   rake
   rspec

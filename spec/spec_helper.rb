@@ -47,3 +47,5 @@ shared_context 'with vcr', vcr: true do
     end
   end
 end
+
+Dir[File.join(__dir__, 'support/**/*.rb')].sort.each { |f| require f }
