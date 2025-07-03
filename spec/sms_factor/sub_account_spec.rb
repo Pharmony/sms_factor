@@ -43,7 +43,7 @@ RSpec.describe SmsFactor::SubAccount do
         )
       end
 
-      let(:expect_create_call) do
+      def expect_create_call
         expect(RestClient).to have_received(:post).with(
           a_string_including('/account'),
           a_string_matching(/"email":"test@test.com"/)

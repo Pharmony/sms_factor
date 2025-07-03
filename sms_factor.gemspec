@@ -15,11 +15,11 @@ Gem::Specification.new do |s| # rubocop:disable Gemspec/RequireMFA
   s.required_ruby_version = ">= #{ENV.fetch('RUBY_VERSION', '2.7')}"
 
   if Gem::Version.new(ENV.fetch('RUBY_VERSION', '2.7')) < Gem::Version.new('3.0')
-    s.add_runtime_dependency 'nokogiri', '~> 1.13', '< 1.14'
+    s.add_dependency 'nokogiri', '~> 1.13', '< 1.14'
   else
-    s.add_runtime_dependency 'nokogiri', '~> 1.14'
+    s.add_dependency 'nokogiri', '~> 1.14'
   end
-  s.add_runtime_dependency 'dry-struct', '~> 1.6'
-  s.add_runtime_dependency 'dry-types', '~> 1.7'
-  s.add_runtime_dependency 'rest-client', '~> 2.0.2', '>= 2.0.2'
+  s.add_dependency 'dry-struct', '~> 1.6'
+  s.add_dependency 'dry-types', '~> 1.7'
+  s.add_dependency 'rest-client', '~> 2.0.2', '>= 2.0.2'
 end

@@ -1,5 +1,7 @@
 version: '3'
 
+name: sms_factor
+
 services:
   # docker-compose run --rm gem [rspec [path to spec file]]
   gem:

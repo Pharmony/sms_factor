@@ -19,7 +19,7 @@ RSpec.describe SmsFactor::Token do
       )
     end
 
-    let(:expect_create_call) do
+    def expect_create_call
       expect(RestClient).to have_received(:post).with(
         a_string_including('/token'),
         a_string_matching(/"name":"test"/)
@@ -49,7 +49,7 @@ RSpec.describe SmsFactor::Token do
     it_behaves_like 'an endpoint with API errors', {
       http_verb: :post,
       method_name: :create_for_main_account,
-      args: [{ name: 'test' }],
+      args: [name: 'test'],
       error_key: :auth_error
     }
   end
@@ -65,7 +65,7 @@ RSpec.describe SmsFactor::Token do
       )
     end
 
-    let(:expect_create_call) do
+    def expect_create_call
       expect(RestClient).to have_received(:post).with(
         a_string_including('/token/account/5'),
         a_string_matching(/"name":"SubToken"/)
@@ -95,7 +95,7 @@ RSpec.describe SmsFactor::Token do
     it_behaves_like 'an endpoint with API errors', {
       http_verb: :post,
       method_name: :create_for_sub_account,
-      args: [{ sub_account_id: 5, name: 'SubToken' }],
+      args: [sub_account_id: 5, name: 'SubToken'],
       error_key: :auth_error
     }
   end
@@ -163,7 +163,7 @@ RSpec.describe SmsFactor::Token do
     it_behaves_like 'an endpoint with API errors', {
       http_verb: :get,
       method_name: :get,
-      args: [{ token_id: 999 }],
+      args: [token_id: 999],
       error_key: :invalid_token
     }
   end
@@ -189,7 +189,7 @@ RSpec.describe SmsFactor::Token do
     it_behaves_like 'an endpoint with API errors', {
       http_verb: :delete,
       method_name: :delete,
-      args: [{ token_id: 999 }],
+      args: [token_id: 999],
       error_key: :invalid_token
     }
   end

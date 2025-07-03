@@ -17,7 +17,9 @@ class SmsFactor
     def self.build(response, klass)
       parsed = JSON.parse(response.body, symbolize_names: true)
 
-      raise error_class(parsed[:status]).new(parsed[:status], parsed[:message]) unless parsed[:status] == 1
+      unless parsed[:status] == 1
+        raise error_class(parsed[:status]).new(parsed[:status], parsed[:message], parsed[:details])
+      end
 
       klass.new(parsed)
     end

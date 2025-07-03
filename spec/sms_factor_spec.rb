@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe SmsFactor, vcr: true do
+describe SmsFactor, :vcr do
   let(:message) { FFaker::LoremFR.phrase[0..160] }
 
   describe 'sms' do

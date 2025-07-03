@@ -28,7 +28,7 @@ VCR.configure do |config|
   config.hook_into :webmock
 end
 
-shared_context 'with vcr', vcr: true do
+shared_context 'with vcr', :vcr do
   # Disable new records on CI. Most of the CI providers
   # configure environment variable called CI.
   let(:cassette_record) { ENV['CI'] ? :none : :new_episodes }

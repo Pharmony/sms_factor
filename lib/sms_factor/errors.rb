@@ -2,12 +2,12 @@
 
 class SmsFactor
   class ApiError < StandardError
-    attr_reader :status, :message
+    attr_reader :status, :message, :details
 
-    def initialize(status, message)
+    def initialize(status, message, details)
       @status = status
-      @message = message
-      super("[API error #{status}] #{message}")
+      @message = "#{message}: #{details}"
+      super("[API error #{status}] #{message}: #{details}")
     end
   end
 
