@@ -42,7 +42,7 @@ class SmsFactor
       RestClient.post(
         sms_factor_url(check),
         { data: build_deliver_data_from(delay).to_json },
-        sms_factor_api_headers(api_key)
+        SmsFactor::Headers.api_headers(api_key)
       )
     )
   end
@@ -65,19 +65,6 @@ class SmsFactor
     data
   end
 
-  def sms_factor_api_headers(api_key = null)
-    headers = {
-      accept: :json,
-      verify_ssl: false
-    }
-
-    if SmsFactor::Init.configuration.api_auth?
-      headers[:Authorization] = "Bearer #{api_key || SmsFactor::Init.configuration.api_key}"
-    end
-
-    headers
-  end
-
   def sms_factor_url(check)
     url = "#{SmsFactor::Init.configuration.api_url}/send"
     url += '/simulate' if check
@@ -85,6 +72,18 @@ class SmsFactor
   end
 end
 
+# core utils
 require 'sms_factor/configuration'
+require 'sms_factor/errors'
+require 'sms_factor/headers'
 require 'sms_factor/init'
+require 'sms_factor/response_factory'
+require 'sms_factor/types'
+
+# responses
 require 'sms_factor/sms_response'
+Dir[File.expand_path('sms_factor/responses/**/*.rb', __dir__)].sort.each { |f| require f }
+
+# services
+require 'sms_factor/sub_account'
+require 'sms_factor/token'

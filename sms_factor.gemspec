@@ -7,10 +7,7 @@ Gem::Specification.new do |s| # rubocop:disable Gemspec/RequireMFA
   s.description   = 'An easy way to use API SMS from http://www.smsfactor.com/ (http://www.smsfactor.com/api-sms)'
   s.authors       = ['Julien Séveno']
   s.email         = 'jseveno@gmail.com'
-  s.files         = ['lib/sms_factor.rb',
-                     'lib/sms_factor/configuration.rb',
-                     'lib/sms_factor/init.rb',
-                     'lib/sms_factor/sms_response.rb']
+  s.files         = Dir['lib/**/*', 'LICENSE', 'README.md']
   s.homepage      = 'https://github.com/juseveno/sms_factor'
   s.licenses      = ['LGPL']
   s.require_paths = ['lib']
@@ -18,9 +15,11 @@ Gem::Specification.new do |s| # rubocop:disable Gemspec/RequireMFA
   s.required_ruby_version = ">= #{ENV.fetch('RUBY_VERSION', '2.7')}"
 
   if Gem::Version.new(ENV.fetch('RUBY_VERSION', '2.7')) < Gem::Version.new('3.0')
-    s.add_runtime_dependency 'nokogiri', '~> 1.13', '< 1.14'
+    s.add_dependency 'nokogiri', '~> 1.13', '< 1.14'
   else
-    s.add_runtime_dependency 'nokogiri', '~> 1.14'
+    s.add_dependency 'nokogiri', '~> 1.14'
   end
-  s.add_runtime_dependency 'rest-client', '~> 2.0.2', '>= 2.0.2'
+  s.add_dependency 'dry-struct', '~> 1.6'
+  s.add_dependency 'dry-types', '~> 1.7'
+  s.add_dependency 'rest-client', '~> 2.0.2', '>= 2.0.2'
 end
